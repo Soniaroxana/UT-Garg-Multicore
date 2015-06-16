@@ -1,7 +1,9 @@
 // TODO 
 // Use synchronized to protect count
-public class SynchronizedCounter extends Counter {
+public class SynchronizedCounter extends Counter{
     @Override
-    public void increment() {
+    public synchronized void increment() {
+        super.count++;
     }
+
 }

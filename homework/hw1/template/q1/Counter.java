@@ -5,15 +5,16 @@
 // by extending this class
 
 public abstract class Counter {
+    protected volatile int count;
+
     public Counter() {
         count = 0;
     }
-    protected volatile int count;
-    
+
     // Atomically increments by one the current value of the count
     public abstract void increment();
-    
+
     public int getCount() {
-      return count;
+        return count;
     }
 }
