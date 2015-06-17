@@ -27,13 +27,10 @@ public class Main {
             lock = new BakeryLock(numThread);
             counter = new LockCounter(lock);
         } else if (args[0].equals("synchronized")) {
-            lock=null;
             counter = new SynchronizedCounter();
         } else if (args[0].equals("reentrant")) {
-            lock=null;
             counter = new ReentrantCounter();
         } else {
-            lock=null;
             System.err.println("ERROR: no such algorithm implemented");
             System.exit(-1);
         }
@@ -66,7 +63,6 @@ public class Main {
 
         // all threads finish incrementing
         // Checking if the result is correct
-        //System.out.println(counter.getCount());
         if (counter == null ||
                 counter.getCount() != (numTotalInc/numThread) * numThread) {
             System.err.println("Error: The counter is not equal to the number "

@@ -40,15 +40,15 @@ public class FastMutexLock implements MyLock {
                     return;
                 } else {
                     flag[myId]=flagEnum.DOWN;
-                    for (int j=0; j<N; j++){
-                        while(flag[j]!=flagEnum.DOWN);
+                    for (int j=0; j<N; j++) {
+                        while (flag[j] != flagEnum.DOWN) ;
+                    }
                         if (Y == myId){
                             return;
                         } else {
                             while(Y != -1);
                             continue;
                         }
-                    }
                 }
             }
         }
