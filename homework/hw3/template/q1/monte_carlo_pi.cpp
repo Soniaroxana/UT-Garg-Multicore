@@ -26,25 +26,5 @@ double MonteCarloPi(int s) {
   }
   pi = 4.0*circleArea/s;
   dtime = omp_get_wtime() - dtime;
-  cout << dtime*1000;
-  cout << "\n";
   return pi;
-}
-
-
-int main(int argc, const char *argv[]) {
-  int points;
-  double pi;
-
-  if (argc<2){
-    cout << "Usage: monte_carlo_pi <number_of_points> \n";
-    return 0;
-  }
-
-  points = atoi(argv[1]);
-
-  pi = MonteCarloPi(points);
-  cout << pi;
-  cout << "\n";
-  return 0;
 }

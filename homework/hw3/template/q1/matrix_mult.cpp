@@ -36,8 +36,6 @@ bool MatrixMult(int rowA, int colA, double* A, int rowB, int colB, double* B,
       }
   }
   dtime = omp_get_wtime() - dtime;
-  //cout << dtime*1000;
-  //cout << "\n";
   return true;
 }
 
@@ -85,9 +83,6 @@ int main(int argc, const char *argv[]) {
   fileMatrixA = argv[1];
   fileMatrixB = argv[2];
   T = atoi(argv[3]);
-  if (argc > 4){
-    test100 = atoi(argv[4]);
-  }
 
   A = ReadMatrixFromFile(fileMatrixA,ROWA,COLA);
   if (A==NULL){
@@ -99,28 +94,13 @@ int main(int argc, const char *argv[]) {
     return 0;
   }
 
-  if(test100>0){
-    COLA = 100;
-    ROWA = 100;
-    COLB = 100;
-    ROWB = 100;
-    A = (double *)malloc(ROWA*COLA*sizeof(double));
-    B = (double *)malloc(ROWA*COLA*sizeof(double));
-    for (int i=0; i<ROWA; i++){
-      for (int j=0; j<COLA; j++){
-        A[i*COLA+j]=1;
-        B[i*COLA+j]=1;
-      }
-    }
-  }
-
   C = (double *) malloc(ROWA*COLB*sizeof(double));
+  cout << ROWA << " " << COLB << endl;
   if(MatrixMult(ROWA, COLA, A, ROWB, COLB, B, C, T)) {
     // TODO: Output the results
     for (int i=0; i<ROWA; i++){
               for (int j=0; j<COLB; j++){
-                cout << C[i*COLB+j];
-                cout << " ";
+                cout << C[i*COLB+j] << " ";
               }
               cout << "\n";
             }
